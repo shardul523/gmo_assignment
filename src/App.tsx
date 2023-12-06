@@ -6,6 +6,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <ContactPage />,
   },
+  {
+    path: "/second-page",
+    element: <h1>Secodn Page</h1>,
+  },
 ]);
 
 function App() {
