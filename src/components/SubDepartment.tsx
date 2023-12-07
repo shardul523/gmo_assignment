@@ -1,6 +1,13 @@
 import { Box, Checkbox, FormControlLabel } from "@mui/material";
 
-const SubDepartment = ({name, checker, i, checked}: {name: string, checker: (a: number) => any, i: number, checked: boolean}) => {
+interface SubDepartmentProps {
+    name: string,
+    checker: (a: number) => any, 
+    i: number, 
+    checked: boolean
+}
+
+const SubDepartment = ({name, checker, i, checked}: SubDepartmentProps) => {
 
     return (
         <Box position={'relative'} left={60}>
