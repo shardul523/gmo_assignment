@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContactPage from "./pages/ContactPage";
+import SecondPage from "./pages/SecondPage";
 
 const router = createBrowserRouter([
   {
@@ -8,7 +9,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/second-page",
-    element: <h1>Secodn Page</h1>,
+    element: <SecondPage/>
   },
 ]);
 

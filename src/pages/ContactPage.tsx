@@ -18,21 +18,22 @@ const ContactPage = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    let nameError = false;
+    let phoneError = false;
+    let emailError = false;
+    
+    if (name.length === 0) nameError = true;
 
-    if (name.length === 0) setError((prev) => ({ ...prev, name: true }));
-    else setError((prev) => ({ ...prev, name: false }));
+    if (phone.length === 0) phoneError = true;
 
-    if (phone.length === 0) setError((prev) => ({ ...prev, phone: true }));
-    else setError((prev) => ({ ...prev, phone: false }));
+    if (email.length === 0) emailError = true;
 
-    if (email.length === 0) setError((prev) => ({ ...prev, email: true }));
-    else setError((prev) => ({ ...prev, email: false }));
+    setError({name: nameError, phone: phoneError, email: emailError});
 
-    for (const val of Object.values(error)) if (val) return;
-
-    console.log("Tests passed");
+    if (nameError || phoneError || emailError) return;
 
     localStorage.setItem("name", name);
     localStorage.setItem("phone", phone);
@@ -72,6 +73,7 @@ const ContactPage = () => {
         <TextField
           fullWidth
           required
+          type="email"
           label="Phone"
           variant="outlined"
           value={phone}
@@ -83,6 +85,7 @@ const ContactPage = () => {
         <TextField
           fullWidth
           required
+          type="phone"
           label="Email"
           variant="outlined"
           value={email}
